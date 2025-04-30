@@ -11,9 +11,12 @@ data = process_data('./demo.csv')
 best_k = evaluate(data)
 prediction = predict(test_point, data, best_k)
 
+print("\ninput point:\n",test_point.arguments)
+print("\ndiagnosis prediction:",prediction)
+
 # ===== OOP demo ===== #
-knn = KNN('./demo.csv')
-best_k = knn.evalute()
-prediction = knn.predict(test_point, best_k)
+# knn = KNN('./demo.csv')
+# best_k = knn.evalute()
+# prediction = knn.predict(test_point, best_k)
 
 #Note: best_k variable can be replaced with any value, but using it ensures good results.

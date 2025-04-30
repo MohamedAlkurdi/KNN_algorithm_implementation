@@ -81,13 +81,11 @@ def evaluate(dataset, test_fraction=0.3):
             temp_K = temp_K-2
             best_k_candidates.append(temp_K)
 
-    print("best K candidates amogos:", best_k_candidates)
+    print("best K candidates:", best_k_candidates)
 
     test_set = dataset.sample(frac=test_fraction, random_state=1)
     test_points = extract_points(test_set)
-    print("\nTest Dataset Columns Count:",len(test_set.columns))
     train_set = dataset.drop(test_set.index)
-    print("\nTraining Dataset Columns Count:",len(train_set.columns),"\n")
     for candidate in best_k_candidates:
         error_rate = 0
         for point in test_points:
@@ -95,9 +93,9 @@ def evaluate(dataset, test_fraction=0.3):
             if prediction != point.target:
                 error_rate +=1
         stats.append({candidate:(error_rate*100)/len(test_points)})
-    print("\n\n\nError rate stats:",stats)
+    print("\nError rate stats:",stats)
     best_k = min(stats, key = lambda x: list(x.values())[0])
-    print("best k:", best_k)
+    print("\nbest k:", best_k)
     # you can return the stats as well if you want, I didn't to keep it simple.
     return list(best_k.keys())[0]
 

@@ -106,8 +106,8 @@ prediction = knn.predict(test_point, best_k)
 # Note: `best_k` can be replaced with any value, but using it ensures better results.
 ```
 
-*Output:*
+*Output Example:*
 ![Output Example](./images/output_example.png)
 
-# Demo
+# Next Step
 Optimizing the performance and handling edge cases.

@@ -2,13 +2,14 @@ import pandas as pd
 import sys
 import numpy as np
 sys.path.append('..')
-from model.Point import *
+from models.Point import *
 from sklearn.preprocessing import StandardScaler
 
 def process_data(path):
     data = pd.read_csv(path)
     
-    # print("Data before processing:\n",data.head())
+    if not path.endswith("csv"):
+        raise Exception("Message from developer: provide a csv file.")
     
     data = data.drop('id', axis=1)
     data = data.replace({None: np.nan})

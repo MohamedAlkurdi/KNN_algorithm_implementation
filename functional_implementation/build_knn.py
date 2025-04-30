@@ -1,18 +1,16 @@
 from utils.utils import *
 from utils.datalab import *
-from model.Point import *
+from models.Point import *
 
-input = Point(13.08,15.71,85.63,520,0.1075,0.127,0.04568,0.0311,0.1967,0.06811,0.1852,0.7477,1.383,14.67,0.004097,0.01898,0.01698,0.00649,0.01678,0.002425,14.5,20.49,96.09,630.5,0.1312,0.2776,0.189,0.07283,0.3184,0.08183, target="target")
-data = process_data('./demo.csv')
 
 def compute_distances(input, dataset, target_index = -1, method="eucledean"):
     other_points = extract_points(dataset, target_index)
     distances = []
-    for i in range(len(other_points)):
-        distance = calculate_distance(input, other_points[i],method)
+    for point in other_points:
+        distance = calculate_distance(input, point,method)
         point_informations = {
             "distance": distance,
-            "target": other_points[i].target,
+            "target": point.target,
         }
         distances.append(point_informations)
     distances.sort(key=lambda x: x["distance"])
@@ -100,7 +98,6 @@ def evaluate(dataset, test_fraction=0.3):
     print("\n\n\nError rate stats:",stats)
     best_k = min(stats, key = lambda x: list(x.values())[0])
     print("best k:", best_k)
-    return stats, best_k
+    # you can return the stats as well if you want, I didn't to keep it simple.
+    return list(best_k.keys())[0]
 
-evaluations = evaluate(data)
-# print("evaluations:", evaluations)

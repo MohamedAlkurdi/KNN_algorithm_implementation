@@ -93,10 +93,6 @@ test_point = Point(
     target="target"
 )
 
-*Output:*
-![Output Example](./images/output_example.png)
-
-
 # ===== Functional Implementation Demo ===== #
 data = process_data('./demo.csv')
 best_k = evaluate(data)
@@ -108,3 +104,10 @@ best_k = knn.evalute()
 prediction = knn.predict(test_point, best_k)
 
 # Note: `best_k` can be replaced with any value, but using it ensures better results.
+```
+
+*Output:*
+![Output Example](./images/output_example.png)
+
+# Demo
+Optimizing the performance and handling edge cases.
